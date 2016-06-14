@@ -1,9 +1,9 @@
 #include <SPI.h>
 #include <Ethernet.h>
 
-const int buttonPin1 = 4;
-const int buttonPin2 = 8;
-const int ledPin1 =  2;
+const int buttonPin1 = 2;
+const int buttonPin2 = 3;
+const int ledPin1 =  4;
 const int ledPin2 =  13;
 const int ledId1 = 1;
 const int ledId2 = 33;
