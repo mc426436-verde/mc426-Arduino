@@ -5,10 +5,10 @@
 const int buttonPin1 = 2;
 const int buttonPin2 = 3;
 const int ledPin1 =  4;
-const int ledPin2 =  13;
-const int ledId1 = 1;
-const int ledId2 = 33;
-const int motorId = 65;
+const int ledPin2 =  5;
+const int ledId1 = 2;
+const int ledId2 = 1;
+const int motorId = 3;
 const int stepsPerRevolution = 512;
 const int motorSpeed = 40;
 
@@ -22,8 +22,8 @@ boolean ledLit2 = false;
 byte mac[] = {
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 };
-IPAddress ip(169, 254, 187, 112);
-IPAddress dino_server(169, 254, 187, 111);
+IPAddress ip(169, 254, 224, 175);
+IPAddress dino_server(169, 254, 224, 174);
 EthernetServer server(80);
 EthernetClient client;
 String server_msg = "";
@@ -34,7 +34,6 @@ void setup() {
   pinMode(ledPin2, OUTPUT);
   pinMode(buttonPin1, INPUT);
   pinMode(buttonPin2, INPUT);
-
   Serial.begin(9600);
   Ethernet.begin(mac, ip);
   Serial.println(Ethernet.localIP());
@@ -110,11 +109,11 @@ void loop() {
 
 void turnDeviceOff(int id) {
   if (id == ledId1) {
-    digitalWrite(ledPin1, LOW);
+    digitalWrite(ledPin1, HIGH);
     ledLit1 = false;
   }
   else if (id == ledId2) {
-    digitalWrite(ledPin2, LOW);
+    digitalWrite(ledPin2, HIGH);
     ledLit2 = false;
   }
   else if (id == motorId) {
@@ -124,11 +123,11 @@ void turnDeviceOff(int id) {
 
 void turnDeviceOn(int id) {
   if (id == ledId1) {
-    digitalWrite(ledPin1, HIGH);
+    digitalWrite(ledPin1, LOW);
     ledLit1 = true;
   }
   else if (id == ledId2) {
-    digitalWrite(ledPin2, HIGH);
+    digitalWrite(ledPin2, LOW);
     ledLit2 = true;
   }
   else if (id == motorId) {
